@@ -1,5 +1,7 @@
 package com.krupeshanadkat.jdnddatapersistence.data;
 
+import com.fasterxml.jackson.annotation.JsonView;
+import com.krupeshanadkat.jdnddatapersistence.views.Views;
 import jakarta.persistence.*;
 import org.hibernate.annotations.Nationalized;
 
@@ -12,9 +14,11 @@ public class Plant {
     @GeneratedValue
     private Long id;
 
+    @JsonView(Views.Public.class)
     @Nationalized
     private String name;
 
+    @JsonView(Views.Public.class)
     @Column(precision = 12, scale = 4)
     private BigDecimal price;
 
