@@ -22,7 +22,7 @@ public class Plant {
     @Column(precision = 12, scale = 4)
     private BigDecimal price;
 
-    @ManyToOne //many plants can belong to one delivery
+    @ManyToOne(fetch = FetchType.LAZY) //many plants can belong to one delivery
     @JoinColumn(name = "delivery_id")  //map the join column in the plant table
     private Delivery delivery;
 

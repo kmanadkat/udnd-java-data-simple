@@ -22,6 +22,6 @@ public class Delivery {
     @Column(columnDefinition = "boolean default false")
     private Boolean completed;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "delivery")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "delivery", cascade = CascadeType.REMOVE)
     private List<Plant> plants;
 }
