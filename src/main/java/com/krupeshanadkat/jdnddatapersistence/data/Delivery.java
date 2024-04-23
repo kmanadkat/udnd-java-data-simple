@@ -2,10 +2,11 @@ package com.krupeshanadkat.jdnddatapersistence.data;
 
 import jakarta.persistence.*;
 import org.hibernate.annotations.Nationalized;
-import org.hibernate.annotations.Type;
 
 import java.time.LocalDateTime;
 import java.util.List;
+
+@NamedQuery(name = "Delivery.findByName", query = "select d from Delivery d where d.name = :name")
 
 @Entity
 public class Delivery {
@@ -22,6 +23,54 @@ public class Delivery {
     @Column(columnDefinition = "boolean default false")
     private Boolean completed;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "delivery", cascade = CascadeType.REMOVE)
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "delivery", cascade = CascadeType.ALL)
     private List<Plant> plants;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public LocalDateTime getDeliveryTime() {
+        return deliveryTime;
+    }
+
+    public void setDeliveryTime(LocalDateTime deliveryTime) {
+        this.deliveryTime = deliveryTime;
+    }
+
+    public Boolean getCompleted() {
+        return completed;
+    }
+
+    public void setCompleted(Boolean completed) {
+        this.completed = completed;
+    }
+
+    public List<Plant> getPlants() {
+        return plants;
+    }
+
+    public void setPlants(List<Plant> plants) {
+        this.plants = plants;
+    }
 }
