@@ -33,14 +33,4 @@ public class DeliveryController {
         return deliveryService.getBill(deliveryId);
     }
 
-    @GetMapping("/delivered/{id}")
-    public Boolean delivered(@PathVariable Long id) {
-        return plantService.delivered(id);
-    }
-
-    @GetMapping("/under-price/{price}")
-    @JsonView(Views.Public.class)
-    public List<Plant> plantsCheaperThan(@PathVariable BigDecimal price) {
-        return plantService.findPlantsBelowPrice(price);
-    }
 }
